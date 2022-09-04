@@ -1,0 +1,36 @@
+.header {
+  padding: 5px 10px;
+  background: #588157;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 40px;
+}
+.logo > img {
+  max-width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+.nav__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__list > li {
+  margin: 0 5px;
+}
+.nav__link {
+  font-size: 24px;
+  color: #dad7cd !important;
+}
+.nav__link_active {
+  font-size: 24px;
+  color: #344e41 !important;
+}
+
+/*# sourceMappingURL=Header.module.css.map */

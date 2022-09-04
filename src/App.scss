@@ -1,4 +1,7 @@
+@use 'sass:map';
 @import url(https://fonts.googleapis.com/css?family=Exo+2:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import 'sass/variables';
+
 *,
 *::before,
 *::after {
@@ -79,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
  */
 hr {
   -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+          box-sizing: content-box;
   /* 1 */
   height: 0;
   /* 1 */
@@ -117,7 +120,7 @@ abbr[title] {
   text-decoration: underline;
   /* 2 */
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -265,7 +268,7 @@ fieldset {
  */
 legend {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   color: inherit;
   /* 2 */
@@ -300,7 +303,7 @@ textarea {
 [type=checkbox],
 [type=radio] {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -343,61 +346,59 @@ textarea {
   /* 2 */
 }
 
+
+
 body,
-html {
+html{
   height: 100%;
   overflow-x: hidden;
-  font-family: "Exo 2";
+  font-family: 'Exo 2';
   line-height: 1;
-  color: #2f3e46;
+  color: map.get($colors, '_dark-gray');
+}
+html{
+
 }
 
-.container {
+.container{
   max-width: 1180px;
   padding: 0 20px;
   margin: 0 auto;
   width: 100%;
 }
-
-.App {
+.App{
   position: relative;
 }
-
-.main {
+.main{
   margin-top: 10px;
 }
-
-.content {
+.content{
   padding-left: 10px;
   flex: 0 0 75%;
 }
-
-.block {
-  box-shadow: 0px 3px 8px #a3b18a;
-  padding: 0 0 10px 0;
+.block{
+  box-shadow: 0px 3px 8px map.get($colors, '_gray-green');
+  padding:  0 0 10px 0;
 }
-
-.title {
+.title{
   font-size: 40px;
-  color: #344e41;
+  color: map.get($colors, '_dark-green');
   font-weight: 700;
   margin-bottom: 20px;
   margin-left: 10px;
 }
 
-.button {
+.button{
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
   padding: 8px 28px;
-  background: #3a5a40;
-  color: white;
+  background: map.get($colors, '_green');
+  color:white;
   display: inline-block;
   transition: all 0.2s ease-in;
+  &:hover{
+    color: map.get($colors, '_milk');
+    background: map.get($colors, '_dark-green');
+  }
 }
-.button:hover {
-  color: #fefae0;
-  background: #344e41;
-}
-
-/*# sourceMappingURL=App.css.map */

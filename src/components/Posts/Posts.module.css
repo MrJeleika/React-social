@@ -1,0 +1,110 @@
+.postList {
+  padding: 0 10px;
+}
+
+.post {
+  border: 2px solid;
+  border-image: linear-gradient(to right, #588157, #3a5a40, #344e41) 1;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.post__title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+.post__text {
+  word-break: break-all;
+}
+.post__button {
+  background: transparent;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 8px 14px;
+  justify-content: right;
+}
+.post__button_edit {
+  color: #8ecae6;
+}
+.post__button_delete {
+  color: #e63946;
+}
+.post__options {
+  text-align: right;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #344e41;
+  opacity: 0.95;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  width: 50vw;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 10px;
+  padding-bottom: 20px;
+}
+.modal__body {
+  padding: 0 15px;
+}
+
+.edit {
+  opacity: 1 !important;
+}
+.edit__input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px 5px;
+  border: 0;
+  resize: none;
+  border: 2px solid rgba(163, 177, 138, 0.5);
+  border-bottom: 2px solid #588157;
+  transition: all 0.2s ease-in;
+}
+.edit__input:invalid {
+  border: 2px solid #e63946;
+}
+.edit__input:hover {
+  border: 2px solid #588157;
+}
+.edit__input:focus {
+  border: 2px solid #344e41;
+}
+.edit__button {
+  float: right;
+}
+.edit__inputName {
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #588157;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=Posts.module.css.map */

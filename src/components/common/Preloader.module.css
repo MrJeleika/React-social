@@ -1,0 +1,12 @@
+.preloader{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(128, 128, 128);
+  opacity: 0.8;
+  padding-left: calc(50% - 32px) ;
+  padding-top: calc(50vh - 32px) ;
+
+}

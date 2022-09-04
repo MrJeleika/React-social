@@ -1,0 +1,31 @@
+@use "sass:map";
+@import '../../sass/_variables.scss';
+
+
+.profile{
+
+}
+.bio{
+
+  display: flex;
+}
+.body{
+  padding: 10px;
+}
+.ava{
+  width: 250px;
+  > img{
+    max-width: 100%;
+  }
+}
+.name{
+  font-size: 28px;
+  color: map.get($colors, '_green');
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.status{
+  font-size: 18px;
+  color: map.get($colors, '_light-green');
+  padding-left: 2px;
+}

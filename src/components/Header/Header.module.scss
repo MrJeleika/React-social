@@ -1,0 +1,35 @@
+@use "sass:map";
+@import '../../sass/_variables.scss';
+
+.header{
+  padding: 5px 10px;
+  background: #588157;
+  display: flex;
+  justify-content: space-between;
+}
+.logo{
+  width: 40px;
+  > img{
+    max-width: 100%;
+  }
+}
+.nav{
+  display: flex;
+  align-items: center;
+  &__list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > li{
+      margin: 0 5px;
+    }
+  }
+  &__link{
+    font-size: 24px;
+    color: map.get($colors, '_gray') !important;
+    &_active{
+      font-size: 24px;
+      color: map.get($colors, '_dark-green') !important;
+    }
+  }
+}

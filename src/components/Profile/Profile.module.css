@@ -1,0 +1,29 @@
+.bio {
+  display: flex;
+}
+
+.body {
+  padding: 10px;
+}
+
+.ava {
+  width: 250px;
+}
+.ava > img {
+  max-width: 100%;
+}
+
+.name {
+  font-size: 28px;
+  color: #3a5a40;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.status {
+  font-size: 18px;
+  color: #588157;
+  padding-left: 2px;
+}
+
+/*# sourceMappingURL=Profile.module.css.map */
