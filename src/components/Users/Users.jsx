@@ -1,22 +1,13 @@
 import React from 'react';
 import s from './Users.module.css'
-import * as axios from 'axios'
 import { useEffect } from 'react';
 import User from './User/User';
 import Preloader from '../common/Preloader';
 
 const Users = (props) => {
   useEffect(()=>{
-      props.isFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.social.currentPageNum}`).then(response =>{
-      props.setUsersToState(response.data.items)
-      props.setTotalUsersCount(response.data.totalCount)
-      props.isFetching(false)
-      console.log('asdads');
-
-    })
+    props.getUsersThunk(props.social.currentPageNum)
   },[props.social.currentPageNum])
-
 
   const pages = []
   for(let i = 0; i <= Math.ceil(props.social.totalUsersCount / 10); i++){

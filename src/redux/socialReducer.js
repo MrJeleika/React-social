@@ -1,3 +1,6 @@
+import $ from 'jquery'
+import { APIgetMyProfile, APIgetUserProfile, APIgetUsers } from '../api/api'
+
 const DELETE_POST = 'DELETE-POST'
 const GET_EDIT_INFO = 'GET-EDIT-INFO'
 const UPDATE_EDIT_BODY_TITLE = 'UPDATE-EDIT-BODY-TITLE'
@@ -10,6 +13,10 @@ const SET_USERS_TO_STATE = 'SET-USERS-TO-STATE'
 const IS_FETCHING = 'IS-FETCHING'
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT'
 const SET_CURRENT_PAGE_NUM = 'SET-CURRENT-PAGE-NUM'
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
+const CHANGE_TEXT_COLOR = 'CHANGE-TEXT-COLOR'
+const UPDATE_STATUS_BODY_TEXT = 'UPDATE-STATUS-BODY-TEXT'
+
 
 
 let initialState = {
@@ -25,6 +32,8 @@ let initialState = {
   isFetching: false,
   totalUsersCount: '',
   currentPageNum: 1,
+  userProfile: null,
+  statusBodyText: '',
 }
 
 const socialReducer = (state = initialState, action) =>{
@@ -103,6 +112,24 @@ const socialReducer = (state = initialState, action) =>{
         ...state,
         currentPageNum: action.currentPageNum
       }
+    case SET_USER_PROFILE:
+      return{
+        ...state,
+        userProfile: action.userProfile
+      }
+    case CHANGE_TEXT_COLOR:
+      action.element.target === document.activeElement ? 
+      $(action.element.target).prev().css("color", "#3a5a40")
+      :
+      $(action.element.target).prev().css("color", "#588157")
+      return{
+        ...state
+      }
+    case UPDATE_STATUS_BODY_TEXT:
+      return{
+        ...state,
+        statusBodyText: action.statusText
+      }
     default: 
       return {...state}
   }
@@ -122,6 +149,39 @@ export const setUsersToState = (users) => ({type: SET_USERS_TO_STATE,users})
 export const isFetching = (boolean) => ({type: IS_FETCHING,boolean})
 export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT,totalCount})
 export const setCurrentPageNum = (currentPageNum) => ({type: SET_CURRENT_PAGE_NUM, currentPageNum})
+export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
+export const changeTextColor = (element) => ({type: CHANGE_TEXT_COLOR, element})
+export const updateStatusBodyText = (statusText) => ({type: UPDATE_STATUS_BODY_TEXT, statusText})
 
+export const getUsersThunk = (currentPageNum) =>{
+  return (dispatch) => {
+    dispatch(isFetching(true))
+    APIgetUsers(currentPageNum).then(response =>{
+      dispatch(setUsersToState(response.items))
+      dispatch(setTotalUsersCount(response.totalCount))
+      dispatch(isFetching(false))
+    })
+  }
+}
+
+export const getUserProfileThunk = (userId) =>{
+  return (dispatch) => {
+      dispatch(isFetching(true))
+    APIgetUserProfile(userId).then(response =>{
+      dispatch(setUserProfile(response))
+      dispatch(isFetching(false))
+    })
+  }
+}
+
+export const getMyProfileThunk = () =>{
+  return (dispatch) => {
+      dispatch(isFetching(true))
+    APIgetMyProfile().then(response =>{
+      dispatch(setUserProfile(response))
+      dispatch(isFetching(false))
+    })
+  }
+}
 
 export default socialReducer

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Users from './Users';
-import {setUsersToState, isFetching, setTotalUsersCount,setCurrentPageNum} from '../../redux/socialReducer'
+import {setUsersToState, isFetching, setTotalUsersCount,setCurrentPageNum,getUsersThunk} from '../../redux/socialReducer'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,6 +12,7 @@ const mapDispatchToProps = {
   isFetching,
   setTotalUsersCount,
   setCurrentPageNum,
+  getUsersThunk,
 }
 
 

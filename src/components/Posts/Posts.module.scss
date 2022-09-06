@@ -6,17 +6,13 @@
 
 }
 .post{
-  border: 2px solid ;
-  border-image: linear-gradient(to right, #588157, #3a5a40, #344e41) 1;
+  box-shadow: 0px 2px 2px 2px #2f3e46;
   width: 100%;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  &__body{
-
-  }
   &__title{
     font-size: 26px;
     font-weight: 600;
@@ -47,31 +43,6 @@
   }
 }
 
-.modalOverlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #344e41;
-  opacity: 0.95;
-}
-.modal{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  width: 50vw;
-  margin-right: -50%;
-  transform: translate(-50%,-50%);
-  background: white;
-  padding: 10px;
-  padding-bottom: 20px;
-  &__body{
-    padding: 0 15px;
-  }
-}
 .edit{
   opacity: 1 !important;
   &__input{

@@ -4,10 +4,13 @@
 
 .body {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .ava {
-  width: 250px;
+  width: 350px;
 }
 .ava > img {
   max-width: 100%;
@@ -24,6 +27,19 @@
   font-size: 18px;
   color: #588157;
   padding-left: 2px;
+}
+
+.link {
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.link > img {
+  width: 30px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=Profile.module.css.map */
