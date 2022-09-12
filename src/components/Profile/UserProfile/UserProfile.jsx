@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { APIgetUserProfile } from '../../../api/api';
 import Preloader from '../../common/Preloader';
 import s from '../Profile.module.css'
 import ProfileLinks from '../ProfileLinks/ProfileLinks';

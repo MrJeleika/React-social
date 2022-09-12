@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import {  isFetching,setUserProfile,getUserProfileThunk} from '../../../redux/socialReducer'
+import { compose } from 'redux';
+import WithAuthRedirect from '../../hoc/withAuthRedirect';
 
 
 function withRouter(Component){
@@ -29,5 +31,11 @@ const mapDispatchToProps = {
 }
 
 
-const UserProfileContainer = connect(mapStateToProps,mapDispatchToProps)(withRouter(UserProfile))
+
+const UserProfileContainer = compose(
+  connect(mapStateToProps,mapDispatchToProps),
+  withRouter,
+  WithAuthRedirect,
+)(UserProfile)
+
 export default UserProfileContainer

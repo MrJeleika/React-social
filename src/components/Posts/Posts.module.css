@@ -40,38 +40,6 @@
   text-align: right;
 }
 
-.edit {
-  opacity: 1 !important;
-}
-.edit__input {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 8px 5px;
-  border: 0;
-  resize: none;
-  border: 2px solid rgba(163, 177, 138, 0.5);
-  border-bottom: 2px solid #588157;
-  transition: all 0.2s ease-in;
-}
-.edit__input:invalid {
-  border: 2px solid #e63946;
-}
-.edit__input:hover {
-  border: 2px solid #588157;
-}
-.edit__input:focus {
-  border: 2px solid #344e41;
-}
-.edit__button {
-  float: right;
-}
-.edit__inputName {
-  font-size: 28px;
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: #588157;
-}
-
 .row {
   display: flex;
   justify-content: space-between;

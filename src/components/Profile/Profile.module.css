@@ -20,13 +20,14 @@
   font-size: 28px;
   color: #3a5a40;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .status {
   font-size: 18px;
   color: #588157;
   padding-left: 2px;
+  display: flex;
 }
 
 .link {
@@ -40,6 +41,11 @@
 
 .hidden {
   display: none;
+}
+
+.editStatus {
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=Profile.module.css.map */

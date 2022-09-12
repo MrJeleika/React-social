@@ -1,0 +1,109 @@
+.form__errorLogin {
+  color: #e63946;
+  font-weight: 600;
+  font-size: 22px;
+}
+.form__item {
+  margin-bottom: 10px;
+  position: relative;
+}
+.form__wrapper {
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 50%;
+}
+.form__remember {
+  margin-left: 3px;
+}
+.form__input {
+  width: 100%;
+  padding: 8px 5px;
+  border: 0;
+  resize: none;
+  margin-bottom: 12px;
+  border: 2px solid rgba(163, 177, 138, 0.5);
+  border-bottom: 2px solid #588157;
+  transition: all 0.2s ease-in;
+}
+.form__input:invalid {
+  border: 2px solid #e63946;
+}
+.form__input:hover {
+  border: 2px solid #588157;
+}
+.form__input:focus {
+  border: 2px solid #344e41;
+}
+.form__input_err {
+  border: 2px solid #e63946 !important;
+}
+
+.statusForm__errorMessage {
+  position: absolute;
+  right: 5px;
+  top: -20px;
+  color: #e63946;
+  font-weight: 600;
+}
+
+.loginForm {
+  width: 100%;
+}
+.loginForm__body {
+  padding: 0 10px;
+  width: 50%;
+}
+@media (max-width: 576px) {
+  .loginForm__body {
+    width: 100%;
+  }
+}
+.loginForm__errorMessage {
+  position: absolute;
+  right: 5px;
+  top: -20px;
+  color: #e63946;
+  font-weight: 600;
+}
+
+.checkbox__input {
+  display: none;
+}
+.checkbox__input:checked + .checkbox__label::after {
+  transform: scale(1);
+}
+.checkbox__input_err + .checkbox__label::before {
+  box-shadow: 0 0 3px 1px #e63946;
+}
+.checkbox__label {
+  display: flex;
+  cursor: pointer;
+  font-size: 18px;
+  position: relative;
+  align-items: center;
+}
+.checkbox__label_err {
+  color: #e63946;
+}
+.checkbox__label::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: #dad7cd;
+  border-radius: 3px;
+  margin: 0 10px 0 0;
+}
+.checkbox__label::after {
+  transition: transform 0.3s ease 0s;
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  top: 4px;
+  left: 4px;
+  background: #3a5a40;
+  transform: scale(0);
+}
+
+/*# sourceMappingURL=form.css.map */

@@ -44,35 +44,7 @@
 }
 
 .edit{
-  opacity: 1 !important;
-  &__input{
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 8px 5px;
-    border: 0;
-    resize: none;
-    border: 2px solid rgba(163, 177, 138, 0.5); //gray green
-    border-bottom: 2px solid map.get($colors, '_light-green');
-    transition: all 0.2s ease-in;
-    &:invalid{
-      border: 2px solid map.get($colors, '_red');
-    }
-    &:hover{
-      border: 2px solid map.get($colors, '_light-green');
-    }
-    &:focus{
-      border: 2px solid map.get($colors, '_dark-green');
-    }
-  }
-  &__button{
-    float: right;
-  }
-  &__inputName{
-    font-size: 28px;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: map.get($colors, '_light-green');
-  }
+
 }
 .row{
   display: flex;

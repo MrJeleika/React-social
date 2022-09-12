@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import {  isFetching,setUserProfile,updateStatusBodyText,changeTextColor, getMyProfileThunk} from '../../../redux/socialReducer'
+import { compose } from 'redux';
+import {  isFetching,setUserProfile,updateStatusBodyText,changeTextColor, getMyProfileThunk,updateProfileStatusThunk,getProfileStatusThunk} from '../../../redux/socialReducer'
+import WithAuthRedirect from '../../hoc/withAuthRedirect';
 import MyProfile from './MyProfile';
 
 
@@ -28,8 +30,14 @@ const mapDispatchToProps = {
   updateStatusBodyText,
   changeTextColor,
   getMyProfileThunk,
+  updateProfileStatusThunk,
+  getProfileStatusThunk,
 }
 
+const MyProfileContainer = compose(
+  connect(mapStateToProps,mapDispatchToProps),
+  withRouter,
+  WithAuthRedirect,
+)(MyProfile)
 
-const MyProfileContainer = connect(mapStateToProps,mapDispatchToProps)(withRouter(MyProfile))
 export default MyProfileContainer

@@ -1,0 +1,119 @@
+@use "sass:map";
+@import '../_variables.scss';
+
+
+
+
+.form{
+  &__errorLogin{
+    color: map.get($colors, '_red');
+    font-weight: 600;
+    font-size: 22px;
+  }
+  &__item{
+    margin-bottom: 10px;
+    position: relative;
+  }
+  &__wrapper{
+    padding:  10px 15px;
+    width: 100%;
+    max-width: 50%;
+  }
+  &__remember{
+    margin-left: 3px;
+  }
+  &__input{
+    width: 100%;
+    padding: 8px 5px;
+    border: 0;
+    resize: none;
+    margin-bottom: 12px;
+    border: 2px solid rgba(163, 177, 138, 0.5); //gray green
+    border-bottom: 2px solid map.get($colors, '_light-green');
+    transition: all 0.2s ease-in;
+    &:invalid{
+      border: 2px solid map.get($colors, '_red');
+    }
+    &:hover{
+      border: 2px solid map.get($colors, '_light-green');
+    }
+    &:focus{
+      border: 2px solid map.get($colors, '_dark-green');
+    }
+    &_err{
+      border: 2px solid map.get($colors, '_red') !important;
+
+    }
+  }
+}
+.statusForm{
+  &__errorMessage{
+    position: absolute;
+    right: 5px;
+    top: -20px;
+    color: map.get($colors, '_red');
+    font-weight: 600;
+  }
+}
+
+.loginForm{
+  width: 100%;
+  &__body{
+    padding: 0 10px;
+    width: 50%;
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+  &__errorMessage{
+    position: absolute;
+    right: 5px;
+    top: -20px;
+    color: map.get($colors, '_red');
+    font-weight: 600;
+  }
+}
+.checkbox{
+  &__input {
+    display: none;
+    &:checked+.checkbox__label::after {
+      transform: scale(1);
+    }
+    &_err+.checkbox__label::before{
+      box-shadow: 0 0 3px 1px map.get($colors, '_red');
+    }
+  }
+  
+  &__label {
+    display: flex;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    align-items: center;
+    &_err{
+      color: map.get($colors, '_red')
+    }
+    &::before {
+
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: map.get($colors,'_gray');
+      border-radius: 3px;
+      margin: 0 10px 0 0;
+    }
+    &::after {
+      transition: transform 0.3s ease 0s;
+      content: '';
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      border-radius: 3px;
+      top: 4px;
+      left: 4px;
+      background: map.get($colors, '_green');
+      transform: scale(0);
+    }
+  }
+  
+}

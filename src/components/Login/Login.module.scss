@@ -1,0 +1,16 @@
+.img{
+  width: 50%;
+  > img{
+    max-width: 100%;
+  }
+}
+.body{
+  padding: 0 auto;
+  display: flex;
+  width: 100%;
+}
+@media (max-width: 568px){
+  .img{
+    display: none;
+  }
+}

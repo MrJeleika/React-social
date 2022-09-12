@@ -23,12 +23,14 @@
   font-size: 28px;
   color: map.get($colors, '_green');
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+
 }
 .status{
   font-size: 18px;
   color: map.get($colors, '_light-green');
   padding-left: 2px;
+  display: flex;
 }
 .link{
   cursor: pointer;
@@ -39,4 +41,8 @@
 }
 .hidden{
   display: none;
+}
+.editStatus{
+  margin-left: 10px;
+  cursor: pointer;
 }

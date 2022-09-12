@@ -6,6 +6,7 @@
   height: 100vh;
   background: rgb(128, 128, 128);
   opacity: 0.8;
+  z-index: 9999;
   padding-left: calc(50% - 32px) ;
   padding-top: calc(50vh - 32px) ;
 

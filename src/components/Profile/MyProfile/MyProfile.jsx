@@ -1,4 +1,5 @@
-import axios from 'axios';
+import edit from '../../../assets/img/edit.svg'
+import '../../../sass/form/form.css'
 import React from 'react';
 import { useEffect } from 'react';
 import Preloader from '../../common/Preloader';
@@ -6,28 +7,16 @@ import s from '../Profile.module.css'
 import ProfileLinks from '../ProfileLinks/ProfileLinks';
 import Modal from 'react-modal';
 import { useState } from 'react';
-import { APIgetMyProfile } from '../../../api/api';
+import { Field, Form } from 'react-final-form';
+import { composeValidators, maxLength, minLength, required, } from '../../../helpers/validators/validators';
 
 
 const MyProfile = (props) => {
-  
   Modal.setAppElement(document.querySelector('.App'))
   const [modalIsOpenChangeStatus, setIsChangeStatus] = useState(false)
 
-  const putStatusRequest =() =>{
-    axios.put(`https://social-network.samuraijs.com/api/1.0/profile/status`,{
-                    "status": "props.social.statusBodyText"
-                  }, {
-                    withCredentials: true,
-                    headers: {
-                      "API-KEY": "a5d9edb8-4508-410c-a678-b4c99c2b4972"
-          }
-      })
-  }
-  
-
-
-  useEffect(()=>{
+  useEffect(() => {
+    props.getProfileStatusThunk()
     props.getMyProfileThunk()
   },[props.router.params.userId])
 
@@ -52,7 +41,8 @@ const MyProfile = (props) => {
                 {props.social.userProfile.fullName}
               </div>
               <div className={s.status}>
-                {props.social.userProfile.aboutMe ? props.social.userProfile.aboutMe : <div className='button' onClick={()=> setIsChangeStatus(true)}>Add Status</div>}
+                {props.social.myProfileStatus ? props.social.myProfileStatus : <div className='button' onClick={()=> setIsChangeStatus(true)}>Add Status</div>}
+                {props.social.myProfileStatus ? <span className={s.editStatus}><img src={edit} alt='edit' onClick={()=> setIsChangeStatus(true)}/></span> : null}
               </div>
             </div>
             <div className={s.options}>
@@ -74,19 +64,42 @@ const MyProfile = (props) => {
                   Change status
                 </div>
                 <div className='modal__body'>
-                  <div className='modal__inputName'>
-                    Status
-                  </div>
-                  <textarea minLength='3' onChange={(e) => {props.updateStatusBodyText(e.target.value)}} onFocus={(e) => props.changeTextColor(e)} onBlur={(e) => props.changeTextColor(e)} type="text" className='modal__input' value={props.social.statusBodyText}/>
-              
-                  <div className='modal__button button' onClick={() => putStatusRequest()}>
-                    Save
-                  </div>
+                  <EditStatusForm {...props} setIsChangeStatus={setIsChangeStatus}/>
                 </div>
               </div>
       </Modal>
     </div>
 
+  );
+}
+
+const EditStatusForm = (props) => {
+  const onSubmit = (formData) =>{
+    props.setIsChangeStatus(false)
+    props.updateProfileStatusThunk(formData.status)
+  }
+  return(
+     <Form onSubmit={onSubmit} className='form' render={({handleSubmit, form, submitting, pristine, values }) =>(
+      <form className='form__body' onSubmit={handleSubmit}>
+        <div className='modal__inputName'>
+            Status
+        </div>
+        <Field  initialValue={props.social.statusBodyText} name='status' validate={composeValidators(required, minLength(3),maxLength(300))}>
+          {({input, meta,})=> (
+            <div className='form__item'>
+              <textarea {...input} type="text" placeholder='Status' className={(meta.error && meta.touched) ? 'form__input form__input_err ' : 'form__input'} component={'textarea'}/>
+              {meta.error && meta.touched &&
+               <div className='statusForm__errorMessage'><span>{meta.error}</span></div>}
+            </div>
+          )} 
+        </Field>
+        <div className='form__item'>
+          <button type='submit' className='button modal__button'>
+            Save
+          </button>
+        </div>
+      </form>
+     )}/>    
   );
 }
 

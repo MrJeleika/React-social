@@ -1,7 +1,7 @@
 import Posts from "./Posts";
 import { connect } from 'react-redux';
 import 
-{ deletePost, getEditInfo, updateEditBodyTitle, updateEditBodyText, saveEditedPost,updateNewPostBodyText,updateNewPostBodyTitle,addNewPost,changeTextColor}
+{ deletePost, getEditInfo, updateEditBodyTitle, updateEditBodyText, saveEditedPost,addNewPost,changeTextColor}
  from "../../redux/socialReducer";
 
 const mapStateToProps = (state) => {
@@ -15,8 +15,6 @@ const mapDispatchToProps = {
   updateEditBodyTitle,
   updateEditBodyText,
   saveEditedPost,
-  updateNewPostBodyText,
-  updateNewPostBodyTitle,
   addNewPost,
   changeTextColor,
 }

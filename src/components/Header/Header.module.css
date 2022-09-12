@@ -3,6 +3,7 @@
   background: #588157;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -22,15 +23,109 @@
   align-items: center;
 }
 .nav__list > li {
-  margin: 0 5px;
+  margin: 0 15px;
 }
 .nav__link {
   font-size: 24px;
+  cursor: pointer;
   color: #dad7cd !important;
 }
 .nav__link_active {
   font-size: 24px;
   color: #344e41 !important;
+}
+
+.burger {
+  display: none;
+}
+
+@media (max-width: 568px) {
+  .nav,
+.profile {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .burger__icon {
+    display: block;
+    height: 20px;
+    cursor: pointer;
+    width: 24px;
+    position: relative;
+    transition: transform 0.3s ease-in 0;
+  }
+  .burger__icon > span, .burger__icon::after, .burger__icon::before {
+    position: absolute;
+    z-index: 60;
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: white;
+    left: 0;
+    transition: transform 0.3s ease-in;
+  }
+  .burger__icon::before {
+    top: 0;
+  }
+  .burger__icon::after {
+    bottom: 0;
+  }
+  .burger__icon > span {
+    top: 9px;
+  }
+  .burger__icon.burger__icon_close::after {
+    transform: rotate(-45deg);
+    top: 10px;
+  }
+  .burger__icon.burger__icon_close::before {
+    transform: rotate(45deg);
+    top: 10px;
+  }
+  .burger__icon.burger__icon_close > span {
+    display: none;
+  }
+  .burger__body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 55;
+    width: 100vw;
+    height: 100vh;
+    background: #588157;
+    transform: translate(0, 0);
+    transition: transform 0.1s ease;
+  }
+  .burger__body_hidden {
+    transform: translate(0, -100%);
+  }
+  .burger__name {
+    font-size: 50px;
+    font-weight: 700;
+    color: #8ecae6 !important;
+  }
+  .burger__header {
+    padding: 5px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  .burger__list {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    text-align: center;
+  }
+  .burger__list > li {
+    margin: 20px 0;
+  }
+  .burger__link {
+    font-size: 30px;
+  }
+}
+.hidden40px {
+  width: 40px;
 }
 
 /*# sourceMappingURL=Header.module.css.map */
