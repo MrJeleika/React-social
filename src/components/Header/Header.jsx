@@ -46,7 +46,7 @@ const Header = (props) => {
            Log out
         </NavLink>
         :
-        <NavLink to={'/login'} className={s.nav__link}>
+        <NavLink to={'/login'} className={({isActive}) => isActive ? `${s.nav__link} ${s.nav__link_active}` : s.nav__link}>
            Log in
         </NavLink>
         }

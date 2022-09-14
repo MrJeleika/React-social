@@ -1,8 +1,10 @@
 import Posts from "./Posts";
 import { connect } from 'react-redux';
 import 
-{ deletePost, getEditInfo, updateEditBodyTitle, updateEditBodyText, saveEditedPost,addNewPost,changeTextColor}
+{ deletePost, getEditInfo, saveEditedPost,addNewPost,changeTextColor}
  from "../../redux/socialReducer";
+import { compose } from "redux";
+import WithAuthRedirect from "../hoc/withAuthRedirect";
 
 const mapStateToProps = (state) => {
   return {
@@ -12,13 +14,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   deletePost,
   getEditInfo,
-  updateEditBodyTitle,
-  updateEditBodyText,
   saveEditedPost,
   addNewPost,
   changeTextColor,
 }
 
+const PostsContainer = compose(
+  connect(mapStateToProps,mapDispatchToProps),
+  WithAuthRedirect,
+)(Posts)
 
-const PostsContainer = connect(mapStateToProps,mapDispatchToProps)(Posts)
 export default PostsContainer

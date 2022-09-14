@@ -17,6 +17,7 @@
   &__ava{
     width: 200px;
     min-width: 200px;
+
     >img{
       max-width: 100%;
     }
@@ -59,3 +60,32 @@
     background: map.get($colors, '_dark-green');
   }
 }
+
+@media (max-width: 768px){
+  .user{
+    &__ava{
+      width: 150px;
+      min-width: 150px;
+    }
+    &__name{
+      font-size: 22px;
+    }
+    &__status{
+      font-size: 16px;
+    }
+  }
+
+}
+@media (max-width: 568px){
+  .user{
+    &__ava{
+      width: 100px;
+      min-width: 100px;
+    }
+    &__body{
+      display: block;
+    }
+  }
+
+}
+

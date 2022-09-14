@@ -8,10 +8,6 @@ import { composeValidators, maxLength, minLength, required } from '../../helpers
 const EditPostModal = (props) => {
   Modal.setAppElement(document.querySelector('.App'))
   const [modalIsOpenEdit, setIsOpenEdit] = useState(false);
-  const onModalClose = (id) =>{
-    setIsOpenEdit(false);
-    props.saveEditedPost(id-1);
-  }
   return (
     <>
     <div className={`${s.post__button} ${s.post__button_edit}`} onClick={() => {setIsOpenEdit(true);props.getEditInfo(props.id-1);}}>

@@ -52,5 +52,19 @@ export const APIlogout = () =>{
   return instance.delete('auth/login').then(response =>{
     console.log(response);
   })
-
+}
+export const APIfollow = (id) =>{
+  return instance.post(`follow/${id}`).then(response =>{
+    return response.data.resultCode
+  })
+}
+export const APIunfollow = (id) =>{
+  return instance.delete(`follow/${id}`).then(response =>{
+    return response.data.resultCode
+  })
+}
+export const APIisFollow = (id) =>{
+  return instance.get(`follow/${id}`).then(response =>{
+    return response.data
+  })
 }

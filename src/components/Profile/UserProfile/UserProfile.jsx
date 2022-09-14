@@ -7,6 +7,7 @@ import ProfileLinks from '../ProfileLinks/ProfileLinks';
 const UserProfile = (props) => {
   useEffect(()=>{
         props.getUserProfileThunk(props.router.params.userId)
+        props.isFollowThunk(props.router.params.userId)
     },[props.router.params.userId])
 
   // Show preloader when something loading
@@ -37,8 +38,16 @@ const UserProfile = (props) => {
               <div className={s.links}>
                 <ProfileLinks {...props} contacts={props.social.userProfile.contacts}/>
               </div>
+              {props.social.isFollow ? 
+              <div onClick={() => props.unfollowThunk(props.router.params.userId)}  className={`${s.user__follow} button`}>
+                Unfollow
+              </div>
+              :
+              <div onClick={() => props.followThunk(props.router.params.userId)} className={`${s.user__follow} button`}>
+                Follow
+              </div>
+              }
             </div>
-
           </div>
         </div>
       </div>

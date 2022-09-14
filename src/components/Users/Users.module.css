@@ -57,4 +57,26 @@
   background: #344e41;
 }
 
+@media (max-width: 768px) {
+  .user__ava {
+    width: 150px;
+    min-width: 150px;
+  }
+  .user__name {
+    font-size: 22px;
+  }
+  .user__status {
+    font-size: 16px;
+  }
+}
+@media (max-width: 568px) {
+  .user__ava {
+    width: 100px;
+    min-width: 100px;
+  }
+  .user__body {
+    display: block;
+  }
+}
+
 /*# sourceMappingURL=Users.module.css.map */

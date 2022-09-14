@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import UserProfile from './UserProfile';
-import {  isFetching,setUserProfile,getUserProfileThunk} from '../../../redux/socialReducer'
+import {  isFetching,setUserProfile,getUserProfileThunk,isFollowThunk,followThunk,unfollowThunk} from '../../../redux/socialReducer'
 import { compose } from 'redux';
 import WithAuthRedirect from '../../hoc/withAuthRedirect';
 
@@ -28,6 +28,9 @@ const mapDispatchToProps = {
   setUserProfile,
   isFetching,
   getUserProfileThunk,
+  isFollowThunk,
+  followThunk,
+  unfollowThunk
 }
 
 

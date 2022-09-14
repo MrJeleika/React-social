@@ -395,11 +395,11 @@ html{
   border: 0;
   padding: 8px 28px;
   background: map.get($colors, '_green');
-  color:white;
+  color:white !important;
   display: inline-block;
   transition: all 0.2s ease-in;
   &:hover{
-    color: map.get($colors, '_milk');
+    color: map.get($colors, '_milk') !important;
     background: map.get($colors, '_dark-green');
   }
 }

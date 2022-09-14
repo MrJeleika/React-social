@@ -35,7 +35,7 @@ const Users = (props) => {
             })}
           </div>
           {props.social.usersList.map((user,i) => 
-            <User {...props} user={user} key={i}/>
+            <User {...props} user={user} id={i} key={i}/>
           )}
         </div>
       </div>

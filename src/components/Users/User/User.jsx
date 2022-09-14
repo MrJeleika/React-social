@@ -20,9 +20,21 @@ const User = (props) => {
           </div>
         </div>
         <div className={s.user__options}>
-          <div className={`${s.user__follow} button`}>
-            Follow
-          </div>
+          {props.social.isAuth ?
+              props.user.followed  ? 
+              <div onClick={() => props.unfollowThunk(props.user.id, props.id)}  className={`${s.user__follow} button`}>
+                Unfollow
+              </div>
+              :
+              <div onClick={() => props.followThunk(props.user.id, props.id)} className={`${s.user__follow} button`}>
+                Follow
+              </div>
+          :  
+              <NavLink to={'/login'} className={`${s.user__follow} button`}>Follow</NavLink>
+          }
+
+          
+
         </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
 import $ from 'jquery'
-import { APIcheckIsAuth, APIgetMyProfile, APIgetProfileStatus, APIgetUserProfile, APIgetUsers, APIlogin, APIlogout, APIupdateProfileStatus } from '../api/api'
+import { APIcheckIsAuth, APIfollow, APIgetMyProfile, APIgetProfileStatus, APIgetUserProfile, APIgetUsers, APIisFollow, APIlogin, APIlogout, APIunfollow, APIupdateProfileStatus } from '../api/api'
 
 const DELETE_POST = 'DELETE-POST'
 const GET_EDIT_INFO = 'GET-EDIT-INFO'
-const UPDATE_EDIT_BODY_TITLE = 'UPDATE-EDIT-BODY-TITLE'
-const UPDATE_EDIT_BODY_TEXT = 'UPDATE-EDIT-BODY-TEXT'
 const SAVE_EDITED_POST = 'SAVE-EDITED-POST'
 const ADD_NEW_POST = 'ADD-NEW-POST'
 const SET_USERS_TO_STATE = 'SET-USERS-TO-STATE'
@@ -17,6 +15,8 @@ const UPDATE_STATUS_BODY_TEXT = 'UPDATE-STATUS-BODY-TEXT'
 const IS_AUTH = 'IS-AUTH'
 const SET_MY_PROFILE_STATUS = 'SET-MY-PROFILE-STATUS'
 const IS_LOGIN_ERROR = 'IS-LOGIN-ERROR' 
+const FOLLOW ='FOLLOW'
+const IS_FOLLOW = 'IS-FOLLOW'
 
 let initialState = {
   postsList: [
@@ -32,6 +32,7 @@ let initialState = {
   myProfileStatus: '',
   isAuth: false,
   isLoginError: false,
+  isFollow: false,
 }
 
 const socialReducer = (state = initialState, action) =>{
@@ -50,16 +51,7 @@ const socialReducer = (state = initialState, action) =>{
         editBodyText: state.postsList[action.id].text,
 
       }
-    case UPDATE_EDIT_BODY_TITLE:
-      return{
-        ...state,
-        editBodyTitle: action.title
-      }
-    case UPDATE_EDIT_BODY_TEXT:
-      return{
-        ...state,
-        editBodyText: action.text
-      }
+
     case SAVE_EDITED_POST:
       return{
         ...state,
@@ -131,6 +123,16 @@ const socialReducer = (state = initialState, action) =>{
         ...state,
         isLoginError: action.isError
       }
+    case FOLLOW:
+      return{
+        ...state,
+        ...state.usersList[action.stateUserId].followed = !state.usersList[action.stateUserId].followed
+      }
+    case IS_FOLLOW:
+      return{
+        ...state,
+        isFollow: action.isFollow
+      }
     default: 
       return {...state}
   }
@@ -140,8 +142,6 @@ const socialReducer = (state = initialState, action) =>{
 
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const getEditInfo = (id) => ({type: GET_EDIT_INFO, id})
-export const updateEditBodyTitle = (title) => ({type: UPDATE_EDIT_BODY_TITLE, title})
-export const updateEditBodyText = (text) => ({type: UPDATE_EDIT_BODY_TEXT, text})
 export const saveEditedPost = (editedPostTitle, editedPostText,id) => ({type: SAVE_EDITED_POST,editedPostTitle,editedPostText,id})
 export const addNewPost = (newPostTitle, newPostText) => ({type: ADD_NEW_POST,newPostTitle, newPostText})
 export const setUsersToState = (users) => ({type: SET_USERS_TO_STATE,users})
@@ -154,6 +154,8 @@ export const updateStatusBodyText = (statusText) => ({type: UPDATE_STATUS_BODY_T
 export const isAuth = (isAuth) => ({type: IS_AUTH, isAuth})
 export const setMyProfileStatus = (profileStatus) => ({type: SET_MY_PROFILE_STATUS, profileStatus})
 export const isLoginError = (isError) => ({type: IS_LOGIN_ERROR, isError})
+export const follow = (stateUserId) => ({type: FOLLOW, stateUserId})
+export const isFollow = (isFollow) => ({type: FOLLOW, isFollow})
 
 
 // THUNKS
@@ -187,7 +189,6 @@ export const getMyProfileThunk = () =>{
     })
   }
 }
-
 export const checkIsAuthThunk = () =>{
   return (dispatch) =>{
       dispatch(isFetching(true))
@@ -197,7 +198,6 @@ export const checkIsAuthThunk = () =>{
    })
   }
 }
-
 export const updateProfileStatusThunk = (status) =>{
   return (dispatch) =>{
     dispatch(isFetching(true))
@@ -205,21 +205,22 @@ export const updateProfileStatusThunk = (status) =>{
     APIgetProfileStatus().then(response => {
       dispatch(setMyProfileStatus(response))
      }) 
+     dispatch(isFetching(false))
    })
-    dispatch(isFetching(false))
+
   }
 }
-
 export const getProfileStatusThunk = () =>{
   return (dispatch) =>{
     dispatch(isFetching(true))
    APIgetProfileStatus().then(response => {
     dispatch(setMyProfileStatus(response))
-   }) 
     dispatch(isFetching(false))
+  }) 
+
+
   }
 }
-
 export const login = (data) =>{
   return (dispatch) => {
      dispatch(isFetching(true))
@@ -231,11 +232,10 @@ export const login = (data) =>{
         // show error on login page
         dispatch(isLoginError(true))
       }
+      dispatch(isFetching(false))
      })
-     dispatch(isFetching(false))
   }
 }
-
 export const logoutThunk = () =>{
   return (dispatch) => {
     dispatch(isFetching(true))
@@ -245,6 +245,36 @@ export const logoutThunk = () =>{
     })
   }
 }
-
+export const followThunk = (id,stateUserId = null) =>{
+  return (dispatch) => {
+    dispatch(isFetching(true))
+    APIfollow(id).then(response =>{
+      if(response === 0 && stateUserId !== null){
+        dispatch(follow(stateUserId))
+      }
+      dispatch(isFetching(false))
+    })
+  }
+}
+export const unfollowThunk = (id,stateUserId = null) =>{
+  return (dispatch) => {
+    dispatch(isFetching(true))
+    APIunfollow(id).then(response =>{
+      if(response === 0 && stateUserId !== null){
+        dispatch(follow(stateUserId))
+      }
+      dispatch(isFetching(false))
+    })
+  }
+}
+export const isFollowThunk = (id) =>{
+  return (dispatch) => {
+      dispatch(isFetching(true))
+    APIisFollow(id).then(response =>{
+      dispatch(isFollow(response))
+      dispatch(isFetching(false))
+    })
+  }
+}
 
 export default socialReducer

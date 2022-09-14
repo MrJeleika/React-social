@@ -392,12 +392,12 @@ html {
   border: 0;
   padding: 8px 28px;
   background: #3a5a40;
-  color: white;
+  color: white !important;
   display: inline-block;
   transition: all 0.2s ease-in;
 }
 .button:hover {
-  color: #fefae0;
+  color: #fefae0 !important;
   background: #344e41;
 }
 

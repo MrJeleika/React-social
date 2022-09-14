@@ -22,9 +22,6 @@ const Post = (props) => {
           </div>
           <EditPostModal {...props} post={props.post}/>
         </div>
-
-
-        
       </div>
     </div>
   );
