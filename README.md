@@ -1,3 +1,5 @@
+## This app use RU API, if you're from Ukraine pls turn on VPN
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -25,4 +27,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- This app use RU API, if you're from Ukraine pls turn on VPN
