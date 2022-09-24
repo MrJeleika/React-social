@@ -31,10 +31,7 @@ const User = (props) => {
               </div>
           :  
               <NavLink to={'/login'} className={`${s.user__follow} button`}>Follow</NavLink>
-          }
-
-          
-
+          }          
         </div>
       </div>
     </div>

@@ -160,71 +160,64 @@ export const isFollow = (isFollow) => ({type: FOLLOW, isFollow})
 
 // THUNKS
 export const getUsersThunk = (currentPageNum) =>{
-  return (dispatch) => {
-    dispatch(isFetching(true))
-    APIgetUsers(currentPageNum).then(response =>{
+  return async (dispatch) => {
+     dispatch(isFetching(true))
+   let response = await APIgetUsers(currentPageNum)
       dispatch(setUsersToState(response.items))
       dispatch(setTotalUsersCount(response.totalCount))
       dispatch(isFetching(false))
-    })
   }
 }
 
 export const getUserProfileThunk = (userId) =>{
-  return (dispatch) => {
+  return async (dispatch) => {
       dispatch(isFetching(true))
-    APIgetUserProfile(userId).then(response =>{
+    let response = await APIgetUserProfile(userId)
       dispatch(setUserProfile(response))
       dispatch(isFetching(false))
-    })
   }
 }
 
 export const getMyProfileThunk = () =>{
-  return (dispatch) => {
+  return async (dispatch) => {
       dispatch(isFetching(true))
-    APIgetMyProfile().then(response =>{
+   let response = await APIgetMyProfile()
       dispatch(setUserProfile(response))
       dispatch(isFetching(false))
-    })
   }
 }
+
 export const checkIsAuthThunk = () =>{
-  return (dispatch) =>{
+  return async (dispatch) =>{
       dispatch(isFetching(true))
-    APIcheckIsAuth().then(response =>{
+    let response = await APIcheckIsAuth()
       dispatch(isAuth(response))
       dispatch(isFetching(false))
-   })
   }
 }
+
 export const updateProfileStatusThunk = (status) =>{
-  return (dispatch) =>{
+  return async (dispatch) =>{
     dispatch(isFetching(true))
-   APIupdateProfileStatus(status).then(() => {
-    APIgetProfileStatus().then(response => {
-      dispatch(setMyProfileStatus(response))
-     }) 
+   await APIupdateProfileStatus(status)
+   let response = await APIgetProfileStatus()
+     dispatch(setMyProfileStatus(response))
      dispatch(isFetching(false))
-   })
 
   }
 }
 export const getProfileStatusThunk = () =>{
-  return (dispatch) =>{
+  return async (dispatch) =>{
     dispatch(isFetching(true))
-   APIgetProfileStatus().then(response => {
+  let response = await APIgetProfileStatus()
     dispatch(setMyProfileStatus(response))
     dispatch(isFetching(false))
-  }) 
-
-
   }
 }
 export const login = (data) =>{
-  return (dispatch) => {
+  return async (dispatch) => {
      dispatch(isFetching(true))
-    APIlogin(data).then(response => {
+  let response = await APIlogin(data)
       if(response === 0) {
          dispatch(isAuth(true))
          dispatch(isLoginError(false))
@@ -233,47 +226,42 @@ export const login = (data) =>{
         dispatch(isLoginError(true))
       }
       dispatch(isFetching(false))
-     })
   }
 }
 export const logoutThunk = () =>{
-  return (dispatch) => {
-    dispatch(isFetching(true))
-    APIlogout().then(()=>{
+  return async (dispatch) => {
+      dispatch(isFetching(true))
+      await APIlogout()
       dispatch(isAuth(false))
       dispatch(isFetching(false))
-    })
   }
 }
 export const followThunk = (id,stateUserId = null) =>{
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(isFetching(true))
-    APIfollow(id).then(response =>{
+    let response = await APIfollow(id)
       if(response === 0 && stateUserId !== null){
         dispatch(follow(stateUserId))
       }
       dispatch(isFetching(false))
-    })
   }
 }
 export const unfollowThunk = (id,stateUserId = null) =>{
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(isFetching(true))
-    APIunfollow(id).then(response =>{
+    let response = await APIunfollow(id)
       if(response === 0 && stateUserId !== null){
         dispatch(follow(stateUserId))
       }
       dispatch(isFetching(false))
-    })
   }
 }
 export const isFollowThunk = (id) =>{
-  return (dispatch) => {
+  return async(dispatch) => {
       dispatch(isFetching(true))
-    APIisFollow(id).then(response =>{
+    let response = await APIisFollow(id)
       dispatch(isFollow(response))
       dispatch(isFetching(false))
-    })
   }
 }
 
