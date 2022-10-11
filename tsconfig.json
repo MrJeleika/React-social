@@ -8,6 +8,11 @@
     ],
     "allowJs": true,
     "baseUrl": "./src",
+    "paths":{
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@lib/*": ["lib/*"],
+    },
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -24,5 +29,4 @@
   "include": [
     "src"
   ],
-  "exclude": ["node_modules", "src/**/*.spec.ts"]
 }
