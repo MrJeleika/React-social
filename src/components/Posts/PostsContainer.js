@@ -1,10 +1,14 @@
-import Posts from "./Posts";
-import { connect } from 'react-redux';
-import 
-{ deletePost, getEditInfo, saveEditedPost,addNewPost,changeTextColor}
- from "../../redux/socialReducer";
-import { compose } from "redux";
-import WithAuthRedirect from "../hoc/withAuthRedirect";
+import { Posts } from './Posts'
+import { connect } from 'react-redux'
+import {
+  deletePost,
+  getEditInfo,
+  saveEditedPost,
+  addNewPost,
+  changeTextColor,
+} from '../../redux/socialReducer'
+import { compose } from 'redux'
+import WithAuthRedirect from '../hoc/withAuthRedirect'
 
 const mapStateToProps = (state) => {
   return {
@@ -20,8 +24,8 @@ const mapDispatchToProps = {
 }
 
 const PostsContainer = compose(
-  connect(mapStateToProps,mapDispatchToProps),
-  WithAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps),
+  WithAuthRedirect
 )(Posts)
 
 export default PostsContainer
