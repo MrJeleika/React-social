@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-social/static/css/main.0431af63.css",
+    "main.js": "/react-social/static/js/main.2857169e.js",
+    "static/media/login.jpg": "/react-social/static/media/login.9c78e96a817da1b0b64c.jpg",
+    "static/media/vk.svg": "/react-social/static/media/vk.61cf2de74a4db3874113f88aee571e82.svg",
+    "static/media/github.svg": "/react-social/static/media/github.d1bb13ce1a593d82e4c0d821dc7f1b41.svg",
+    "static/media/link.svg": "/react-social/static/media/link.49f18665aabe82b2040dd5488dbb0ea0.svg",
+    "static/media/instagram.svg": "/react-social/static/media/instagram.d6a6364c44de1059c98a7c203dd69471.svg",
+    "static/media/twitter.svg": "/react-social/static/media/twitter.f4e88a546554d3e2b27de0385c91decb.svg",
+    "static/media/edit.svg": "/react-social/static/media/edit.c931ecb6f0076a6c0fefb3f9495ce28d.svg",
+    "static/media/youtube.svg": "/react-social/static/media/youtube.1a8b17313326c27034eee43f57a7c976.svg",
+    "static/media/website.svg": "/react-social/static/media/website.b2c980945b2cdc4b53c376d370a4d9cf.svg",
+    "index.html": "/react-social/index.html",
+    "static/media/facebook.svg": "/react-social/static/media/facebook.0aacd4a05863f017d6d1055eddb3b129.svg",
+    "main.0431af63.css.map": "/react-social/static/css/main.0431af63.css.map",
+    "main.2857169e.js.map": "/react-social/static/js/main.2857169e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0431af63.css",
+    "static/js/main.2857169e.js"
+  ]
+}
