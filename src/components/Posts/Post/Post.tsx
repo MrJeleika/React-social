@@ -1,25 +1,39 @@
 import React from 'react'
-import { EditPostModal } from '../../Modal/EditPostModal'
+
+// Components
+import { EditPostModal } from 'components/Modal/EditPostModal'
+
+//Styles
 import s from '../Posts.module.scss'
 
-export const Post = (props: any) => {
+interface iProps {
+  id: number
+  title: string
+  text: string
+  post: object
+  deletePost: Function
+}
+
+export const Post = (props: iProps) => {
+  const { id, title, text, post, deletePost } = props
+
   return (
     <div>
       <div className={s.post}>
         <div className={s.post__body}>
           <div className={s.post__title}>
-            {props.id}. {props.title}
+            {id}. {title}
           </div>
-          <div className={s.post__text}>{props.text}</div>
+          <div className={s.post__text}>{text}</div>
         </div>
         <div className={s.post__options}>
           <div
             className={`${s.post__button} ${s.post__button_delete}`}
-            onClick={() => props.deletePost(props.id)}
+            onClick={() => deletePost(props.id)}
           >
             Delete
           </div>
-          <EditPostModal {...props} post={props.post} />
+          <EditPostModal {...props} post={post} />
         </div>
       </div>
     </div>

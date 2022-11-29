@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import s from './Header.module.scss'
 import { NavLink } from 'react-router-dom'
-import { LogoSVG } from '../svgs/LogoSVG'
+
+// Components
+import { LogoSVG } from 'components/svgs/LogoSVG'
+
+// Styles
+import s from './Header.module.scss'
 import '../../App.scss'
 
-const Header = (props: any) => {
+export const Header = (props: any) => {
   const [burgerIsOpen, setburgerIsOpen] = useState<boolean>(false)
   useEffect(() => {
     props.checkIsAuthThunk()
@@ -153,5 +157,3 @@ const Header = (props: any) => {
     </header>
   )
 }
-
-export default Header

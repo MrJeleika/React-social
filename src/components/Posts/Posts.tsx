@@ -1,7 +1,9 @@
-import React from 'react'
+// Components
+import { AddPostModal } from 'components/Modal/AddPostModal'
 import { Post } from './Post/Post'
+
+// Styles
 import s from './Posts.module.scss'
-import { AddPostModal } from 'components'
 
 export const Posts = (props: any) => {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Users.module.css'
 import { useEffect } from 'react'
 import User from './User/User'
-import Preloader from '../common/Preloader'
+import { Preloader } from 'components/common/Preloader'
 
 const Users = (props) => {
   const pages = []

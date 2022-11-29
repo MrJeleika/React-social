@@ -11,7 +11,7 @@ import LoginContainer from './components/Login/LoginComponent'
 // Styles
 import './App.css'
 
-export function App() {
+export const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
